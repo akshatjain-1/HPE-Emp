@@ -26,33 +26,31 @@ public class EmployeeController {
     @Autowired
     private EmployeeManager employeeManager;
 
-    // GET endpoint to fetch all employees
-
+    // GET endpoint 
     @GetMapping("/employees")
     public Employees getEmployees() {
         return employeeManager.getAllEmployees();
     }
 
-    // POST endpoint to add a new employee
-    @PostMapping("/add")
-    public ResponseEntity<Object> 
-      addEmployee(@RequestBody Employee employee) {
-      
-        // Generate ID for the new employee
-        Integer id = employeeManager.getAllEmployees()
-          .getEmployeeList().size() + 1;
+    // POST endpoint 
+    @PostMapping("/employees")
+    public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) {
+        Integer id = employeeManager.getAllEmployees().getEmployeeList().size() + 1;
         employee.setId(id);
 
-        // Add employee to the list
         employeeManager.addEmployee(employee);
 
-        // Build location URI for the new employee
         URI location = ServletUriComponentsBuilder
-          .fromCurrentRequest()
+                .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(employee.getId())
                 .toUri();
 
-        return ResponseEntity.created(location).build();
+        // Create response map with message
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Employee added successfully");
+        response.put("employee", employee);
+
+        return ResponseEntity.created(location).body(response);
     }
 }
