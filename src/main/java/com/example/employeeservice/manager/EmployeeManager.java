@@ -13,11 +13,11 @@ public class EmployeeManager {
     static {
         
         employees.getEmployeeList()
-          .add(new Employee(1, "Prem", "Tiwari", "prem@gmail.com"));
+          .add(new Employee(1, "Prem", "Tiwari", "prem@gmail.com", "jj"));
         employees.getEmployeeList()
-          .add(new Employee(2, "Vikash", "Kumar", "vikash@gmail.com"));
+          .add(new Employee(2, "Vikash", "Kumar", "vikash@gmail.com","jj"));
         employees.getEmployeeList()
-          .add(new Employee(3, "Ritesh", "Ojha", "ritesh@gmail.com"));
+          .add(new Employee(3, "Ritesh", "Ojha", "ritesh@gmail.com","jj"));
     }
 
     public Employees getAllEmployees() {

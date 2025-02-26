@@ -7,12 +7,13 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
+    private String title;
 
     // Default constructor
     public Employee() {}
 
     // Parameterized constructor
-    public Employee(Integer id, String firstName, String lastName, String email) {
+    public Employee(Integer id, String firstName, String lastName, String email, String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
